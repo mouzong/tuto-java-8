@@ -41,8 +41,10 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public String displayNamesFromYoungestToOldest(final List<Person> persons) {
-        //TODO
-        return "";
+        return persons.stream()
+                .sorted(Comparator.comparing(Person::getAge))
+                .map(Person::getNom)
+                .collect(Collectors.joining());
     }
 
     /**

@@ -18,8 +18,11 @@ public class ExerciceOptional implements IExerciceOptional {
      */
     @Override
     public String getNameFirstArtisteInIpod(Person person) {
-        //TODO
-        return "Justin Bieber";
+        return Optional.ofNullable(person)
+                .map(p -> p.dansMonIpod)
+                .filter(artiste -> !artiste.isEmpty())
+                .map(artiste -> artiste.get(0).nom)
+                .orElse("unknown");
     }
 
     /**
@@ -31,8 +34,10 @@ public class ExerciceOptional implements IExerciceOptional {
      */
     @Override
     public String getNameOfChef(Person person) {
-        //TODO
-        return "Say my name";
+        return Optional.ofNullable(person)
+                .flatMap(p -> p.chef)
+                .map(chef -> chef.nom)
+                .orElse("Eric");
     }
 
 }
