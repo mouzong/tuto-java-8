@@ -16,7 +16,7 @@ import static org.assertj.core.data.MapEntry.entry;
 
 /**
  * Partie 1 : API Fonctionnelle.
- *
+ * <p>
  * http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
  * http://soat.developpez.com/tutoriels/java/projet-lambda-java8/
  * https://www.techempower.com/blog/2013/03/26/everything-about-java-8/
@@ -54,7 +54,7 @@ public class ExerciceStreamTest {
 
         // Concaténer cette liste pour affichage avec un séparateur.
         String prettyString = exo.displayNamesFromYoungestToOldest(myHeroes);
-        //assertThat(prettyString).isEqualTo("Du plus jeune au plus âgé: Spiderman, Catwoman, Daredevil, Batman, SuperDupont.");
+        assertThat(prettyString).isEqualTo("Du plus jeune au plus âgé: Spiderman, Catwoman, Daredevil, Batman, SuperDupont.");
     }
 
     /**
@@ -124,7 +124,7 @@ public class ExerciceStreamTest {
         Person p5 = new Person("Eric", 42, "M");
         p5.dansMonIpod = Lists.newArrayList(
                 new Artiste("Juda's Priest", 77),
-                new Artiste("Trust",35)
+                new Artiste("Trust", 35)
         );
         Person p6 = new Person("Lang", 33, "M");
         p6.dansMonIpod = Lists.newArrayList(

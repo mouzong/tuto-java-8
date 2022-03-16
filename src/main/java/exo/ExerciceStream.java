@@ -41,10 +41,10 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public String displayNamesFromYoungestToOldest(final List<Person> persons) {
-        return persons.stream()
+        return "Du plus jeune au plus âgé: " + persons.stream()
                 .sorted(Comparator.comparing(Person::getAge))
                 .map(Person::getNom)
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(", ", "", "."));
     }
 
     /**
@@ -54,8 +54,9 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public double averageAge(final List<Person> persons) {
-        //TODO
-        return 0;
+
+        return persons.stream()
+                .collect(Collectors.averagingDouble(Person::getAge));
     }
 
     /**
@@ -65,8 +66,9 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public double averageAgeMale(final List<Person> persons) {
-        //TODO
-        return 0;
+        return persons.stream()
+                .filter(person -> person.getSexe().equals('M') )
+                .collect(Collectors.averagingDouble(person -> person.getAge()));
     }
 
     /**
@@ -77,8 +79,10 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public double averageAgeByInitial(final List<Person> persons, final String letter) {
-        //TODO
-        return 0;
+
+        return persons.stream()
+                .filter(person -> person.nom.startsWith(letter))
+                .collect(Collectors.averagingDouble(person->person.getAge()));
     }
 
     /**
@@ -89,8 +93,9 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public Map<String, Double> averageAgeBySex(final List<Person> persons) {
-        //TODO
-        return new HashMap<>();
+
+        return persons.stream()
+                .collect(Collectors.groupingBy(Person::getSexe, Collectors.averagingDouble(Person::getAge)));
     }
 
 
