@@ -56,7 +56,7 @@ public class ExerciceStream implements IExerciceStream {
     public double averageAge(final List<Person> persons) {
 
         return persons.stream()
-                .collect(Collectors.averagingDouble(Person::getAge));
+                .collect(Collectors.averagingInt(Person::getAge));
     }
 
     /**
@@ -67,8 +67,8 @@ public class ExerciceStream implements IExerciceStream {
     @Override
     public double averageAgeMale(final List<Person> persons) {
         return persons.stream()
-                .filter(person -> person.getSexe().equals('M') )
-                .collect(Collectors.averagingDouble(person -> person.getAge()));
+                .filter(person -> person.getSexe().equals("M") )
+                .collect(Collectors.averagingInt(person -> person.getAge()));
     }
 
     /**
@@ -82,7 +82,7 @@ public class ExerciceStream implements IExerciceStream {
 
         return persons.stream()
                 .filter(person -> person.nom.startsWith(letter))
-                .collect(Collectors.averagingDouble(person->person.getAge()));
+                .collect(Collectors.averagingInt(person->person.getAge()));
     }
 
     /**
@@ -95,7 +95,7 @@ public class ExerciceStream implements IExerciceStream {
     public Map<String, Double> averageAgeBySex(final List<Person> persons) {
 
         return persons.stream()
-                .collect(Collectors.groupingBy(Person::getSexe, Collectors.averagingDouble(Person::getAge)));
+                .collect(Collectors.groupingBy(Person::getSexe, Collectors.averagingInt(Person::getAge)));
     }
 
 
@@ -107,7 +107,7 @@ public class ExerciceStream implements IExerciceStream {
      */
     @Override
     public List<Person> getMainstreamMusicListenersJava8(final List<Person> persons){
-        //TODO
+
         return new ArrayList();
     }
 
