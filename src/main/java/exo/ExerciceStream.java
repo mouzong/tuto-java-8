@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Exercices sur les Streams Java 8.
- *
+ * <p>
  * http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
  * http://soat.developpez.com/tutoriels/java/projet-lambda-java8/
  * https://www.techempower.com/blog/2013/03/26/everything-about-java-8/
@@ -49,6 +49,7 @@ public class ExerciceStream implements IExerciceStream {
 
     /**
      * Faire une moyenne des âges.
+     *
      * @param persons Liste de personnes
      * @return moyenne des âges
      */
@@ -61,20 +62,22 @@ public class ExerciceStream implements IExerciceStream {
 
     /**
      * Faire une moyenne des âges des hommes.
+     *
      * @param persons Liste de personnes
      * @return moyenne des âges
      */
     @Override
     public double averageAgeMale(final List<Person> persons) {
         return persons.stream()
-                .filter(person -> person.getSexe().equals("M") )
+                .filter(person -> person.getSexe().equals("M"))
                 .collect(Collectors.averagingInt(person -> person.getAge()));
     }
 
     /**
      * Faire une moyenne des âges des personnes dont le nom commence par une lettre.
+     *
      * @param persons Liste de personnes
-     * @param letter initiale
+     * @param letter  initiale
      * @return moyenne des âges
      */
     @Override
@@ -82,12 +85,13 @@ public class ExerciceStream implements IExerciceStream {
 
         return persons.stream()
                 .filter(person -> person.nom.startsWith(letter))
-                .collect(Collectors.averagingInt(person->person.getAge()));
+                .collect(Collectors.averagingInt(person -> person.getAge()));
     }
 
     /**
      * Faire une moyenne des âges en fonction du sexe.
      * Indices : Collectors.groupingBy, Collectors.averagingInt
+     *
      * @param persons Liste de personnes
      * @return Map avec la moyenne d'âge en fonction du sexe
      */
@@ -102,13 +106,21 @@ public class ExerciceStream implements IExerciceStream {
     /**
      * Retourner la liste, classée par ordre alphabétique, de personnes qui écoutent un artiste très populaire.
      * Implémentation en Java 8 de la méthode {@link IExerciceStream#getMainstreamMusicListeners}
+     *
      * @param persons Liste de personnes
      * @return liste de personnes qui écoutent un artiste très populaire
      */
     @Override
-    public List<Person> getMainstreamMusicListenersJava8(final List<Person> persons){
+    public List<Person> getMainstreamMusicListenersJava8(final List<Person> persons) {
 
-        return new ArrayList();
+        return persons.stream()
+                .sorted(Comparator.comparing(Person::getNom))
+                .filter(person ->
+                        person.dansMonIpod.stream()
+                                .filter(artist -> artist.classement <= 10)
+                                .collect(Collectors.toList()).size() > 0
+                )
+                .collect(Collectors.toList());
     }
 
 
