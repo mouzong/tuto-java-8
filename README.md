@@ -51,15 +51,15 @@ Exercice 2 (Attention niveau confirmé) :
 
 ### countBySpecialCharPosition
 > 1. Filtrer
-> 2. Transformer (map) en Liste de positions du caractère spécial (avec exo.IPasswordStats#getIndexOfSpecialChar(java.lang.String))
-> 3. Ecraser la List<List<Integer>> en Liste<Integer> (flatMap(i -> i.stream()))
-> 4. Créer une Map en regroupant par Position et compter les occurrences. Le lambda x -> x est l'équivalent de Function.identity()
+> 2. Transformer `(map)` en Liste de positions du caractère spécial (avec `exo.IPasswordStats#getIndexOfSpecialChar(java.lang.String))`
+> 3. Ecraser la `List<List<Integer>>` en `Liste<Integer> (flatMap(i -> i.stream()))`
+> 4. Créer une Map en regroupant par Position et compter les occurrences. Le `lambda x -> x` est l'équivalent de `Function.identity()`
 
 
 ### getAllBySpecialCharPosition
 > 1. Filtrer
 > 2. Pour chaque password, récupérer les positions des caractères spéciaux,
-> 3. Parcourir ces positions et construire une paire (Position, Password) avec new AbstractMap.SimpleEntry<>(K, V)
+> 3. Parcourir ces positions et construire une paire `(Position, Password)` avec `new AbstractMap.SimpleEntry<>(K, V)`
 > 4. Ecraser la collection Liste de Liste de paires en liste de paires
-> 5. Grouper avec clé en construisant une liste des passwords correspondants avec grouping, mapping et toList()
+> 5. Grouper avec clé en construisant une liste des passwords correspondants avec `grouping`, `mapping` et `toList()`
 

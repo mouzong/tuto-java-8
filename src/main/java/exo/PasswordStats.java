@@ -57,9 +57,14 @@ public class PasswordStats implements IPasswordStats {
      * Est un mot de passe costaud.
      * TODO : Composer les prédicats.
      */
-    public Predicate<String> isStrongPassword =
-            //TODO
-            isNotBlank;
+    public Predicate<String> isStrongPassword = isNotBlank
+            .and(hasUppercase)
+            .and(hasLowercase)
+            .and(hasNumber)
+            .and(hasSpecial)
+            .and(isLongEnough)
+            .and(hasNoRepetition)
+            .and(isNotTooLong);
 
     /**
      * Est un mot de passe costaud.
